@@ -23,12 +23,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 #step 3.5: COMPLETE learn what a day is (to avoid day trading)
 #step 4: automate trading based on step 3 parameters
 
-#google sheets API information
-# Client ID: 100367147001290190351
-# Client Secret:  dA7j30TVgENnVVuiRcxi_AV8
-# {"installed":{"client_id":"151535863061-1borkndgvatg931vskb90ul9ehi8e4po.apps.googleusercontent.com","project_id":"freckle-1603249102165","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"TcXvKM5gFmHQQXxcqJyHv_Jy","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
-# API KEY: AIzaSyAiXAjHpvghjXeQPdVT9PlZviEoq1WLYSU
-
 tempStockList = ['JT','OBLN','MESO','MRO','PRTS','AR','HMLP','FLL',
                  'QFIN','REDU','RETA','GPRO','F','GNUS','NYMT',
                  'BFRA','NOK','MFA','KODK','CLVS','KOS','ALKS',
