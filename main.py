@@ -13,16 +13,6 @@ import gspread
 import yfinance
 from oauth2client.service_account import ServiceAccountCredentials
 
-#freckle is a stock trading bot
-#step 1 COMPLETE: view and manually 1 trade stock via freckle
-#step 2 NOT NECESSARY/COMPLETE: collect data on stocks over time
-#step 3: MEH build parameters for a "good stock"
-#          - params can be built using robinhoods statistics, no need to
-#            make my own statistics.
-#step 3.25: COMPLETE KINDA build parameter for when to sell stock
-#step 3.5: COMPLETE learn what a day is (to avoid day trading)
-#step 4: automate trading based on step 3 parameters
-
 tempStockList = ['JT','OBLN','MESO','MRO','PRTS','AR','HMLP','FLL',
                  'QFIN','REDU','RETA','GPRO','F','GNUS','NYMT',
                  'BFRA','NOK','MFA','KODK','CLVS','KOS','ALKS',
