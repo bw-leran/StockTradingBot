@@ -201,14 +201,6 @@ def dayTradeActiveStatus(dayTradeList):
     #considerDayTrade will add that stock to the list (use for loop when running), so this func will check if the list
     #has anything in it, then will give a bool value according.
 
-#challenges with above 3 functions:
-#   how to determine difference between consider buying and consider day trade
-#       think needs to be day trade buy and day trade sell, for example the regular buy will not be looking at
-#       movement amount made today, but patterns overtime. Day trade, however, will only look at today.
-#       also need to add a day trade to a list to be more frequently monitored for activity, possibly every
-#       minute to get max gains on that day trade. So I could have a func to determine whether a day trade is
-#       active or not, changing the intervals between wakeUpFreckle as appropriate.
-
 def wakeUpFreckle():
     #ABvalue = 'B' #for day trades, creating two list loop
     while True:
