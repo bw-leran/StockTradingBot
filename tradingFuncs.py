@@ -1,5 +1,5 @@
 import robin_stocks as rStocks
-from robin_stocks import *
+from robin_stocks.robinhood import *
 import matplotlib.pyplot as plt
 from authCreds import auth1, auth2, auth3
 import pandas
@@ -278,11 +278,3 @@ def wakeUpFreckle():
 
         #time.sleep(5) #FOR DEBUGGING ONLY
 
-def testFuncs():
-    login(auth1, auth2)
-    print(get_latest_price(inputSymbols='FLL', priceType=None, includeExtendedHours=True))
-    considerDayTrade('FLL')
-
-if __name__ == '__main__':
-    wakeUpFreckle()
-    #testFuncs()
