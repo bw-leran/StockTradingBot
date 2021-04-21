@@ -23,6 +23,10 @@ dayTradeList = []
 stockMarketOpenPrice = {}
 stockMarketUpdatedPrice = {}
 
+def getMarket():
+    rStocks.robinhood.get_markets()
+    #need to finish building out this func as an arg for get_market_hours_today()
+
 def marketOpenCheck(marketOpenTime,marketCloseTime):
     #market opens 0330 and closes 1000 HST
     currentTime = datetime.datetime.now()

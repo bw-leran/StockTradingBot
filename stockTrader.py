@@ -1,12 +1,14 @@
 from tradingFuncs import *
 
+r = rStocks.robinhood
+
 def wakeUpFreckle():
-    #ABvalue = 'B' #for day trades, creating two list loop
     while True:
         #FOR DEBUGGING ONLY
-        #x = 1
-        #if x == 1:
-        if marketOpenCheck(3, 10):
+        #x = True
+        #if x:
+        #if marketOpenCheck(3, 10):
+        if r.get_market_today_hours()['is_open']:
             print('Market Open!')
             login(auth1,auth2)
             if len(stockMarketOpenPrice) == 0:
@@ -17,15 +19,15 @@ def wakeUpFreckle():
                         pass
             else:
                 stockMarketUpdatedPrice.clear()
-                ownedStocks = rStocks.build_holdings()
+                ownedStocks = r.build_holdings()
 
                 for stockSymbols in stockMarketOpenPrice:
                     getMarketUpdatedPrice(stockSymbols)
                     considerSelling(stockSymbols,ownedStocks)
 
         else:
-            stockMarketOpenPrice.clear()
-            #getAllStockSymbols()
+            if len(stockMarketOpenPrice) > 0:
+                stockMarketOpenPrice.clear()
 
 if __name__ == '__main__':
     wakeUpFreckle()
