@@ -8,7 +8,7 @@ def wakeUpFreckle():
         #x = True
         #if x:
         #if marketOpenCheck(3, 10):
-        if r.get_market_today_hours()['is_open']:
+        if r.get_market_today_hours(get_markets())['is_open']:
             print('Market Open!')
             login(auth1,auth2)
             if len(stockMarketOpenPrice) == 0:
@@ -22,12 +22,19 @@ def wakeUpFreckle():
                 ownedStocks = r.build_holdings()
 
                 for stockSymbols in stockMarketOpenPrice:
-                    getMarketUpdatedPrice(stockSymbols)
-                    considerSelling(stockSymbols,ownedStocks)
+                    if stockMarketUpdatedPrice not in dontSellList:
+                        getMarketUpdatedPrice(stockSymbols)
+                        considerSelling(stockSymbols,ownedStocks)
 
         else:
             if len(stockMarketOpenPrice) > 0:
                 stockMarketOpenPrice.clear()
+            print('Market Closed')
+
+def test():
+    login(auth1,auth2)
+    getMarket()
 
 if __name__ == '__main__':
-    wakeUpFreckle()
+    #wakeUpFreckle()
+    test()

@@ -1,17 +1,12 @@
 import robin_stocks as rStocks
 from robin_stocks.robinhood import *
-import matplotlib.pyplot as plt
+import sys
+sys.path.insert(1, 'C:\\Users\\brand\\OneDrive\\Documents\\Python Scripts')
 from authCreds import auth1, auth2, auth3
 import pandas
 import pyotp
-import sys
-import numpy
-import openpyxl
 import time
 import datetime
-import gspread
-import yfinance
-from oauth2client.service_account import ServiceAccountCredentials
 
 tempStockList = ['JT','OBLN','MESO','MRO','PRTS','AR','HMLP','FLL',
                  'QFIN','REDU','RETA','GPRO','F','GNUS','NYMT',
@@ -19,12 +14,14 @@ tempStockList = ['JT','OBLN','MESO','MRO','PRTS','AR','HMLP','FLL',
                  'SUHJY','BSQR','PSTG','CBAY','IBIO','TEVA','EBON',
                  'TSLA','MCRB','TRXC','CRBP','SRNE','AMC']
 dayTradeList = []
+dontSellList = ['FLL','DOGE']
 
 stockMarketOpenPrice = {}
 stockMarketUpdatedPrice = {}
 
 def getMarket():
-    rStocks.robinhood.get_markets()
+    market = rStocks.robinhood.get_markets()
+    return market
     #need to finish building out this func as an arg for get_market_hours_today()
 
 def marketOpenCheck(marketOpenTime,marketCloseTime):
@@ -42,9 +39,9 @@ def marketOpenCheck(marketOpenTime,marketCloseTime):
 def login(username,password):
     totp = pyotp.TOTP(auth3).now()
     try:
-        rStocks.login(username,password,mfa_code=totp)
-        #print(totp) #FOR DEBUGGING ONLY
-        #print('Successfully logged in!')
+        print(totp)  # FOR DEBUGGING ONLY
+        rStocks.robinhood.login(username,password,mfa_code=totp,store_session=False)
+        print('Successfully logged in!')
     except Exception as e:
         print('Log in failed...')
         if hasattr(e,'message'):
@@ -54,7 +51,7 @@ def login(username,password):
         sys.exit(0)
 
 def displayStocks():
-    myStocks = rStocks.build_holdings()
+    myStocks = rStocks.robinhood.build_holdings()
     myStocksDF = pandas.DataFrame(myStocks)
     print(myStocksDF)
     print(myStocks)
@@ -93,7 +90,7 @@ def buyStock(stock,shareAmount):
 
 def sellStock(stock,shareAmount):
     try:
-        rStocks.order_sell_market(stock,shareAmount)
+        rStocks.robinhood.order_sell_market(stock,shareAmount)
         print(str(shareAmount)+' shares of '+str(stock).upper()+' sold!')
     except Exception as e:
         print('Log in failed...')
