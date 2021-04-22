@@ -31,6 +31,7 @@ def wakeUpFreckle():
                 stockMarketOpenPrice.clear()
             print('Market Closed')
 
+#fake
 def test():
     login(auth1,auth2)
     getMarket()
